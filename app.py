@@ -33,11 +33,8 @@ async def on_startup():
 
     logger.info("App started")
 
-
-for router in [
-    start_router,
-]:
-    dp.include_router(router)
+# Регистрация роутеров
+dp.include_router(start_router)
 
 
 @app.post(WEBHOOK_PATH)
