@@ -5,8 +5,9 @@ from fastapi import FastAPI
 from aiogram import Bot, Dispatcher, types
 from aiogram.fsm.storage.memory import MemoryStorage
 
-from src.config import load_config
-from src.tgbot.handlers.start import start_router
+from src import load_config
+from src.handlers.start import start_router
+from src.middlewares.config import ConfigMiddleware
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -33,8 +34,11 @@ async def on_startup():
 
     logger.info("App started")
 
-# Регистрация роутеров
-dp.include_router(start_router)
+    # Register middlewares
+    dp.update.outer_middleware(ConfigMiddleware(config))
+
+    # Register routes
+    dp.include_router(start_router)
 
 
 @app.post(WEBHOOK_PATH)
