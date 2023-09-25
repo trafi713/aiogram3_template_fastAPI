@@ -28,9 +28,7 @@ dp = Dispatcher(storage=storage)
 
 @app.on_event("startup")
 async def on_startup():
-    webhook_info = await bot.get_webhook_info()
-    if webhook_info != WEBHOOK_URL:
-        await bot.set_webhook(url=WEBHOOK_URL)
+    await bot.set_webhook(url=WEBHOOK_URL)
 
     logger.info("App started")
 

@@ -1,7 +1,10 @@
 from aiogram import types, Router
 from aiogram.filters import Command
 
+from src.filters.is_private import IsPrivateFilter
+
 start_router = Router()
+start_router.message.filter(IsPrivateFilter())
 
 
 @start_router.message(Command('start'))
