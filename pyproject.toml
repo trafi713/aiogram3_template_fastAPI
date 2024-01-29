@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "aiogram3-template-fastapi"
+version = "0.1.0"
+description = ""
+license = "MIT"
+authors = ["Cyberpunk <@cp713>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiogram = "^3.3.0"
+fastapi = "^0.109.0"
+uvicorn = "^0.27.0.post1"
+environs = "^10.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
